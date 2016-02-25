@@ -21,7 +21,7 @@ export class FilterChart extends React.Component {
                 params[input[i].alias] = input[i].value;
             }
         }
-        for(var i = 0; i < this.props.charts.length+1; i++){
+        for(var i = 0; i < this.props.charts.length; i++){
             this.refs["chart_".concat(i)].update(params);
         }
         return params;
@@ -37,15 +37,6 @@ export class FilterChart extends React.Component {
                 type={x.type} options={x.options}/>);
         }.bind(this));
 
-        var charts = this.props.charts.map(function(x, index){
-            if(x.type != "Random"){
-                return(<Chart
-                    ref={"chart_".concat(index)}
-                    type={x.type} options={x.options}/>);
-            }
-        });
-
-        var ncharts = this.props.charts.length;
         return (
             <div>
                 <Row>
@@ -57,11 +48,14 @@ export class FilterChart extends React.Component {
 
 
                 <ReplaceImages
-                    ref={"chart_".concat(ncharts)}
+                    ref={"chart_1"}
                     url={"/images/"} />
                 </Row>
                 <Row>
-                {charts}
+                <Chart
+                    ref={"chart_0"}
+                    type={this.props.charts[0].type}
+                    options={this.props.charts[0].options}/>
                 </Row>
 
             </div>

@@ -67,7 +67,7 @@
 
 	var filter_style = "'btn-group'";
 	var dynamic = true;
-	var charts = [{ "type": "PlotlyAPI", "options": { "chartid": "plotlyid", "url": "/plotlyurl/", "params": { "new_index": "1" } } }, { "type": "Random", "options": { "chartid": "imagechart", "url": "/images/" } }];
+	var charts = [{ "type": "PlotlyAPI", "options": { "chartid": "plotlyid", "url": "/plotlyurl/", "params": { "play_index": "1" } } }, { "type": "Random", "options": { "chartid": "imagechart", "url": "/images/" } }];
 	var filters = [{ "type": "SliderInput", "options": { "min": 1, "default": "1", "max": 95, "label": "play_index", "alias": "play_index", "step": 1 } }];
 	_reactDom2.default.render(_react2.default.createElement(_SimpleChart.FilterChart, {
 	    filter_style: filter_style,
@@ -19731,7 +19731,7 @@
 	                    params[input[i].alias] = input[i].value;
 	                }
 	            }
-	            for (var i = 0; i < this.props.charts.length + 1; i++) {
+	            for (var i = 0; i < this.props.charts.length; i++) {
 	                this.refs["chart_".concat(i)].update(params);
 	            }
 	            return params;
@@ -19748,15 +19748,6 @@
 	                    type: x.type, options: x.options });
 	            }.bind(this));
 
-	            var charts = this.props.charts.map(function (x, index) {
-	                if (x.type != "Random") {
-	                    return _react2.default.createElement(_pyxley.Chart, {
-	                        ref: "chart_".concat(index),
-	                        type: x.type, options: x.options });
-	                }
-	            });
-
-	            var ncharts = this.props.charts.length;
 	            return _react2.default.createElement(
 	                'div',
 	                null,
@@ -19773,13 +19764,16 @@
 	                    _reactBootstrap.Row,
 	                    null,
 	                    _react2.default.createElement(_replace.ReplaceImages, {
-	                        ref: "chart_".concat(ncharts),
+	                        ref: "chart_1",
 	                        url: "/images/" })
 	                ),
 	                _react2.default.createElement(
 	                    _reactBootstrap.Row,
 	                    null,
-	                    charts
+	                    _react2.default.createElement(_pyxley.Chart, {
+	                        ref: "chart_0",
+	                        type: this.props.charts[0].type,
+	                        options: this.props.charts[0].options })
 	                )
 	            );
 	        }
@@ -110681,7 +110675,7 @@
 /* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -110693,6 +110687,10 @@
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _jquery = __webpack_require__(409);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -110717,55 +110715,54 @@
 	    }
 
 	    _createClass(ReplaceImages, [{
-	        key: "_initAlerts",
+	        key: '_initAlerts',
 	        value: function _initAlerts() {
-	            $.get(this.props.url.concat("?", $.param({
-	                game: "game1",
-	                new_index: 1
+	            _jquery2.default.get(this.props.url.concat("?", _jquery2.default.param({
+	                play_index: 1
 	            })), function (r) {
 	                this.setState({ data: r.result });
 	            }.bind(this));
 	        }
 	    }, {
-	        key: "update",
+	        key: 'update',
 	        value: function update(items) {
-	            var url = this.props.url.concat("?", $.param(items));
-	            $.get(url, function (r) {
+	            var url = this.props.url.concat("?", _jquery2.default.param(items));
+	            _jquery2.default.get(url, function (r) {
 	                this.setState({ data: r.result });
 	            }.bind(this));
 	        }
 	    }, {
-	        key: "componentDidMount",
+	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            this._initAlerts();
 	        }
 	    }, {
-	        key: "render",
+	        key: 'render',
 	        value: function render() {
 	            var header = this.state.data.map(function (item, index) {
 	                return _react2.default.createElement(
-	                    "td",
+	                    'td',
 	                    null,
 	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "SimInfo" },
+	                        'div',
+	                        { className: 'SimInfo' },
 	                        _react2.default.createElement(
-	                            "h4",
+	                            'h4',
 	                            null,
 	                            _react2.default.createElement(
-	                                "span",
-	                                { className: "pull-left label label-default" },
+	                                'span',
+	                                { className: 'pull-left label label-default' },
 	                                item.position,
-	                                " ",
+	                                ' ',
 	                                item.jersey
 	                            )
 	                        ),
 	                        _react2.default.createElement(
-	                            "h4",
+	                            'h4',
 	                            null,
 	                            _react2.default.createElement(
-	                                "span",
-	                                { className: "pull-right label label-default" },
+	                                'span',
+	                                { className: 'pull-right label label-default' },
 	                                item.name
 	                            )
 	                        )
@@ -110774,19 +110771,19 @@
 	            }.bind(this));
 	            var images = this.state.data.map(function (item, index) {
 	                return _react2.default.createElement(
-	                    "td",
-	                    { className: "style-image-table" },
-	                    _react2.default.createElement("img", { className: "style-image", src: item.imgsrc, height: "145" }),
+	                    'td',
+	                    { className: 'style-image-table' },
+	                    _react2.default.createElement('img', { className: 'style-image', src: item.imgsrc, height: '145' }),
 	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "Siminfo" },
+	                        'div',
+	                        { className: 'Siminfo' },
 	                        _react2.default.createElement(
-	                            "h4",
+	                            'h4',
 	                            null,
 	                            _react2.default.createElement(
-	                                "span",
-	                                { className: "pull-left label label-default" },
-	                                "Score: ",
+	                                'span',
+	                                { className: 'pull-left label label-default' },
+	                                'Score: ',
 	                                item.dist
 	                            )
 	                        )
@@ -110795,21 +110792,21 @@
 	            }.bind(this));
 
 	            return _react2.default.createElement(
-	                "div",
-	                { className: "bs-scroll" },
+	                'div',
+	                { className: 'bs-scroll' },
 	                _react2.default.createElement(
-	                    "table",
-	                    { className: "dash-grid", style: { width: "100%" } },
+	                    'table',
+	                    { className: 'dash-grid', style: { width: "100%" } },
 	                    _react2.default.createElement(
-	                        "tbody",
+	                        'tbody',
 	                        null,
 	                        _react2.default.createElement(
-	                            "tr",
+	                            'tr',
 	                            null,
 	                            header
 	                        ),
 	                        _react2.default.createElement(
-	                            "tr",
+	                            'tr',
 	                            null,
 	                            images
 	                        )
@@ -110821,7 +110818,8 @@
 
 	    return ReplaceImages;
 	}(_react2.default.Component);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(409)))
+
+	;
 
 /***/ },
 /* 409 */

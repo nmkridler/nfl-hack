@@ -1,5 +1,6 @@
 
 import React from 'react';
+import $ from 'jquery';
 
 export class ReplaceImages extends React.Component {
     constructor(props) {
@@ -13,8 +14,7 @@ export class ReplaceImages extends React.Component {
         $.get(this.props.url.concat("?",
             $.param(
                 {
-                    game: "game1",
-                    new_index: 1
+                    play_index: 1
                 })
             ),
         function(r){
@@ -75,4 +75,4 @@ export class ReplaceImages extends React.Component {
             </div>
         );
     }
-}
+};

@@ -27,7 +27,7 @@ def add_plotly_chart(df, init_params, route_func=None):
         layout={
             "hovermode": "closest",
             "plot_bgcolor": 'rgba(44,94,79,0.7)',
-            "xaxis": {"range": [0, 53]},
+            "xaxis": {"range": [0, 53], "showgrid": False},
             "paper_bgcolor": 'rgba(44, 94, 79, 0.0)',
         },
         route_func=route_func)
