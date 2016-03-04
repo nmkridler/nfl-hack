@@ -29,6 +29,8 @@ def add_plotly_chart(df, init_params, route_func=None):
             "plot_bgcolor": 'rgba(44,94,79,0.7)',
             "xaxis": {"range": [0, 53], "showgrid": False},
             "paper_bgcolor": 'rgba(44, 94, 79, 0.0)',
+            "height": 600,
+            "width": 1200
         },
         route_func=route_func)
 
@@ -63,12 +65,13 @@ class MainView(MainModel):
     def build_ui(self, save):
         self.ui = UILayout(
             "FilterChart",
-            "jsx/SimpleChart",
+            "./jsx/SimpleChart",
             "component_id")
 
 
         sldr = SliderInput("play_index", 1,
-            int(self.on_field["play_index"].max()), "play_index", "1")
+            int(self.on_field["play_index"].max()),
+            "play_index", "1")
         self.ui.add_filter(sldr)
 
         # Add a plotly chart
@@ -84,7 +87,8 @@ class MainView(MainModel):
 
         if save:
             self.ui.render_layout(self.mod,
-                self.static_ + "/layout.js")
+                self.static_ + "/layout.js",
+                alias="Main")
         else:
             self.ui.assign_routes(self.mod)
 

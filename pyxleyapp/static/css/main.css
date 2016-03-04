@@ -1,33 +1,20 @@
 
 .pyx-slider {
-  width: 200px !important;
+  width: 300px !important;
 }
 
-.pyDataMap {
-    position: middle;
-    height: 500px;
-    width: 800px;
-  }
 
 body {
   font-style:normal;
   font-family:"BrandonText-Regular", sans-serif;
-  background-color: rgba(44, 94, 79, 0.3);
+  background-color: rgba(44, 94, 79, 0.3) !important;
 
 }
 
-#titlebar {
-   color: whitesmoke;
-   background-color: rgb(1,51,105);
-   text-align: center;
-   vertical-align: middle;
-   padding-top: 20px;
-   padding-bottom: 20px;
-   font-size: larger;
-}
 
 ul#nflscroll li {
     display:inline;
+    width: 100%;
 }
 
 .label {

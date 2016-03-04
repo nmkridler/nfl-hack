@@ -50,7 +50,7 @@ export class ReplaceImages extends React.Component {
         var images = this.state.data.map(function(item, index){
             return(
                 <td className="style-image-table">
-                <img className="style-image" src={item.imgsrc} height="145"></img>
+                <img className="style-image" src={item.imgsrc} height="125"></img>
                 <div className="Siminfo">
                      <h4><span className="pull-left label label-default">Score: {item.dist}</span></h4>
                 </div>
