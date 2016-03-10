@@ -1,8 +1,8 @@
 # NFL Hackathon - Pyxley App
 
 This repository contains code that was used for the NFL Hackathon. The
-data provided in this repository are synthetic and not the data that
-was provided at the hackathon by the NFL. This repository is purely meant
+data provided in this repository are __synthetic__ and __not the data that
+was provided at the hackathon by the NFL__. This repository is purely meant
 to demonstrate a basic application that leverages Blueprints and can
 be extended to a larger application.
 
