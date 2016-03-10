@@ -6,6 +6,8 @@ was provided at the hackathon by the NFL. This repository is purely meant
 to demonstrate a basic application that leverages Blueprints and can
 be extended to a larger application.
 
+Check out Pyxley [here](https://github.com/stitchfix/pyxley)
+
 ## Installing Dependencies
 Install NPM. Then run `npm install`. Alternatively, running
 `pyxapp --init . ` will install all of the dependencies needed.
